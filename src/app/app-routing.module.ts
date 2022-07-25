@@ -8,24 +8,30 @@ import { ProjectsComponent } from './projects/projects.component';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
+  {
+    path: 'home',
     component: HomePageComponent,
-  },
-  {
-    path: 'contact',
-    component: ContactComponent,
-  },
-  {
-    path: 'education',
-    component: EducationComponent,
   },
   {
     path: 'projects',
     component: ProjectsComponent,
   },
   {
+    path: 'education',
+    component: EducationComponent,
+  },
+  {
+    path: 'contact',
+    component: ContactComponent,
+  },
+  {
     path: '**',
-    component: HomePageComponent,
-  }
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

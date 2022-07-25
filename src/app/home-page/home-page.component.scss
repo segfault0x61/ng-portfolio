@@ -1,0 +1,84 @@
+/* Home Page */
+
+.home-top-container {
+  padding-top: 130px;
+  width: 100vw;
+  vertical-align: top;
+  text-align: center;
+}
+.home-top-container h2 {
+  text-align: right;
+}
+.home-top-left {
+  display: inline-block;
+  width: 250px;
+  height: 250px;
+}
+.home-top-left-image img {
+  border: 1px solid rgba(128, 128, 128, 0.205);
+  width: 80%;
+  height: 90%;
+  border-radius: 5px;
+  background-size: cover;
+  vertical-align: top;
+}
+.home-top-right {
+  display: inline-block;
+  vertical-align: top;
+}
+.home-top-right ul {
+  width: 300px;
+  /*border: 1px solid black;*/
+  border-radius: 2px;
+  padding: 10px 0px 10px 15px;
+  margin: 30px 0 0 35px;
+  vertical-align: top;
+  text-align: left;
+}
+.home-top-right li {
+  list-style-type: none;
+}
+.home-top-right li .icon {
+  font-size: 1.3em;
+  text-align: right;
+  width: 20px;
+  padding-right: 10px;
+  display: inline-block;
+}
+
+.home-bottom-text {
+  width: 600px;
+  max-width: 80vw;
+  margin: 40px auto 20px auto;
+}
+
+.button {
+  padding: 10px 20px;
+  border-radius: 2px;
+  color: white;
+  display: inline-block;
+  margin: 20px 10px 0px 0px;
+  background: rgb(38, 119, 180);
+}
+
+.button:hover {
+  background: #135689;
+}
+
+.github {
+  width: 80px;
+}
+
+.CV {
+  width: 120px;
+}
+
+.linkedin {
+  width: 90px;
+}
+
+.home-bottom-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}

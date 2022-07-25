@@ -1,0 +1,36 @@
+/* Navigation */
+nav {
+  width: 100vw;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+  background-color: white;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.205);
+  position: fixed;
+  li {
+    list-style-type: none;
+    display: inline-block;
+    width: 22vw;
+    max-width: 300px;
+    height: 50px;
+    line-height: 50px;
+    vertical-align: middle;
+    margin: 15px 0.4vw 15px 0.4vw;
+    border-radius: 2px;
+    text-align: center;
+    border: 1px solid rgba(128, 128, 128, 0.205);
+    :hover {
+      color: black;
+    }
+  }
+}
+
+.icon {
+  margin-right: 0.5vw;
+}
+
+.active {
+  font-weight: 800;
+  color: rgb(0, 81, 187);
+  background-color: #eee;
+}
