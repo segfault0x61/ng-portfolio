@@ -10,6 +10,7 @@
       [(ngModel)]="name"
       placeholder="Enter your name"
       #nameControl="ngModel"
+      [ngClass]="{ invalid: nameControl.invalid && nameControl.touched }"
     />
     <ng-container *ngIf="nameControl.invalid && nameControl.touched">
       <small *ngIf="nameControl.errors!['required']">
@@ -29,6 +30,7 @@
       [(ngModel)]="email"
       placeholder="Enter your email address"
       #emailControl="ngModel"
+      [ngClass]="{ invalid: emailControl.invalid && emailControl.touched }"
     />
     <ng-container *ngIf="emailControl.invalid && emailControl.touched">
       <small *ngIf="emailControl.errors!['required']">
@@ -47,6 +49,7 @@
       placeholder="Enter your message..."
       #messageControl="ngModel"
       rows="5"
+      [ngClass]="{ invalid: messageControl.invalid && messageControl.touched }"
     ></textarea>
     <ng-container *ngIf="messageControl.invalid && messageControl.touched">
       <small *ngIf="messageControl.errors!['required']">

@@ -27,30 +27,29 @@ export class ContactComponent implements OnInit {
 
   onSubmit(): void {
     if (!this.validateEmail(this.email)) {
-      this.email = '';
+      this.email = 'INVALID';
     } else if (this.name && this.email && this.message) {
       this.sendMessage();
+    } else {
+      alert('Missing value(s). Message not sent.');
     }
   }
 
   sendMessage(): void {
-    const name = this.name.trim().split(/\s+/).join(' ');
-    const email = this.email.trim();
-    const message = this.message.trim();
-    const contact_number = (Math.random() * 100000) | 0;
-
-    const params = {
-      name,
-      email,
-      message,
-      contact_number,
-    };
-
-    this.emailService.sendEmail(params);
+    this.emailService.sendEmail(this.params);
 
     alert('Sucess! Your message has been sent.');
 
     this.reloadComponent();
+  }
+
+  get params(): object {
+    return {
+      name: this.name.trim().split(/\s+/).join(' '),
+      email: this.email.trim(),
+      message: this.message.trim().split(/\s+/).join(' '),
+      contact_number: (Math.random() * 100000) | 0,
+    };
   }
 
   validateEmail(email: string): boolean {
