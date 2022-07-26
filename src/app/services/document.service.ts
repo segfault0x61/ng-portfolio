@@ -7,7 +7,7 @@ import { Inject, Injectable } from '@angular/core';
 export class DocumentService {
   constructor(@Inject(DOCUMENT) private doc: Document) {}
 
-  updateDocTitle(title: string) {
+  updateDocTitle(title: string): void {
     this.doc.title = `${title} - Joshua Torres Portfolio`;
   }
 }

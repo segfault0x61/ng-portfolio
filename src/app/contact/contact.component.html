@@ -1,1 +1,65 @@
-<p>contact works!</p>
+<div class="contact-container">
+  <h2>Contact</h2>
+  <form class="contact-form" #contactForm="ngForm">
+    <label for="name">Name</label>
+    <input
+      required
+      type="text"
+      name="name"
+      pattern="[A-Za-z-ÄäÅåÖö\s]+"
+      [(ngModel)]="name"
+      placeholder="Enter your name"
+      #nameControl="ngModel"
+    />
+    <ng-container *ngIf="nameControl.invalid && nameControl.touched">
+      <small *ngIf="nameControl.errors!['required']">
+        You must enter your name
+      </small>
+      <small *ngIf="nameControl.errors!['pattern']">
+        Please enter a valid name
+      </small>
+    </ng-container>
+
+    <label for="email">Email</label>
+    <input
+      required
+      type="email"
+      pattern=".+@.+\..+"
+      name="email"
+      [(ngModel)]="email"
+      placeholder="Enter your email address"
+      #emailControl="ngModel"
+    />
+    <ng-container *ngIf="emailControl.invalid && emailControl.touched">
+      <small *ngIf="emailControl.errors!['required']">
+        You must enter your email
+      </small>
+      <small *ngIf="emailControl.errors!['pattern']">
+        Please enter a valid email
+      </small>
+    </ng-container>
+
+    <label for="message">Message</label>
+    <textarea
+      required
+      name="message"
+      [(ngModel)]="message"
+      placeholder="Enter your message..."
+      #messageControl="ngModel"
+      rows="5"
+    ></textarea>
+    <ng-container *ngIf="messageControl.invalid && messageControl.touched">
+      <small *ngIf="messageControl.errors!['required']">
+        Please enter your message
+      </small>
+    </ng-container>
+    <div
+      class="button send"
+      (click)="onSubmit()"
+      [ngClass]="{ disabled: contactForm.invalid }"
+    >
+      <span class="icon is-small"><i class="fa fa-envelope"></i></span>
+      Send Message
+    </div>
+  </form>
+</div>
