@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DocumentService } from '../services/document.service';
-import emailjs from 'emailjs-com';
+import { EmailService } from '../services/email.service';
 
 @Component({
   selector: 'app-contact',
@@ -20,7 +20,10 @@ export class ContactComponent implements OnInit {
     text: '',
   };
 
-  constructor(private docService: DocumentService) {}
+  constructor(
+    private docService: DocumentService,
+    private emailService: EmailService
+  ) {}
 
   ngOnInit(): void {
     this.docService.updateDocTitle(this.title);
@@ -36,14 +39,17 @@ export class ContactComponent implements OnInit {
     }
   }
 
+  get params(): object {
+    return {
+      name: this.name.trim(),
+      email: this.email.trim(),
+      message: this.message.trim(),
+      contact_number: (Math.random() * 100000) | 0,
+    };
+  }
+
   sendEmail(params: any, form: NgForm): void {
-    const serviceId = 'service_w0z6z6g';
-    const templateId = 'contact_form';
-    const userId = 'dRvzaAp8aTa8BxGA1';
-
-    emailjs.init(userId);
-
-    emailjs.send(serviceId, templateId, params).then(
+    this.emailService.sendEmail(params).then(
       (res) => {
         form.reset();
         this.showSnackBar('Your message has been sent');
@@ -54,15 +60,6 @@ export class ContactComponent implements OnInit {
         console.log('FAILED...', error);
       }
     );
-  }
-
-  get params(): object {
-    return {
-      name: this.name.trim(),
-      email: this.email.trim(),
-      message: this.message.trim(),
-      contact_number: (Math.random() * 100000) | 0,
-    };
   }
 
   validateEmail(email: string): boolean {
