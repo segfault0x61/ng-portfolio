@@ -7,7 +7,7 @@
 }
 
 body {
-  background: #fafafa;
+  background: #eceff1;
 }
 
 a {
@@ -40,6 +40,14 @@ h2 {
   }
   .home-top-right h2 {
     text-align: center !important;
+  }
+  .home-top-right {
+    position: relative;
+    left: 35px;
+  }
+  .home-bottom-text {
+    position: relative;
+    bottom: 40px;
   }
 }
 @media screen and (max-width: 540px) {
