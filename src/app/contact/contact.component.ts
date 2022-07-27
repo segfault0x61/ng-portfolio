@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 import { DocumentService } from '../services/document.service';
-import { EmailService } from '../services/email.service';
+import emailjs from 'emailjs-com';
 
 @Component({
   selector: 'app-contact',
@@ -11,43 +11,56 @@ import { EmailService } from '../services/email.service';
 export class ContactComponent implements OnInit {
   title = 'Contact';
 
-  name: string = '';
-  email: string = '';
-  message: string = '';
+  public name: string = '';
+  public email: string = '';
+  public message: string = '';
 
-  constructor(
-    private router: Router,
-    private emailService: EmailService,
-    private docService: DocumentService
-  ) {}
+  public snackBar = {
+    show: false,
+    text: '',
+  };
+
+  constructor(private docService: DocumentService) {}
 
   ngOnInit(): void {
     this.docService.updateDocTitle(this.title);
   }
 
-  onSubmit(): void {
+  onSubmit(form: NgForm): void {
     if (!this.validateEmail(this.email)) {
-      this.email = 'INVALID';
+      this.email = '';
     } else if (this.name && this.email && this.message) {
-      this.sendMessage();
+      this.sendEmail(this.params, form);
     } else {
-      alert('Missing value(s). Message not sent.');
+      this.showSnackBar('Missing value(s). Message not sent.');
     }
   }
 
-  sendMessage(): void {
-    this.emailService.sendEmail(this.params);
+  sendEmail(params: any, form: NgForm): void {
+    const serviceId = 'service_w0z6z6g';
+    const templateId = 'contact_form';
+    const userId = 'dRvzaAp8aTa8BxGA1';
 
-    alert('Sucess! Your message has been sent.');
+    emailjs.init(userId);
 
-    this.reloadComponent();
+    emailjs.send(serviceId, templateId, params).then(
+      (res) => {
+        form.reset();
+        this.showSnackBar('Your message has been sent');
+        console.log('SUCCESS!', res.status, res.text);
+      },
+      (error) => {
+        this.showSnackBar('Error, message not sent');
+        console.log('FAILED...', error);
+      }
+    );
   }
 
   get params(): object {
     return {
-      name: this.name.trim().split(/\s+/).join(' '),
+      name: this.name.trim(),
       email: this.email.trim(),
-      message: this.message.trim().split(/\s+/).join(' '),
+      message: this.message.trim(),
       contact_number: (Math.random() * 100000) | 0,
     };
   }
@@ -58,10 +71,14 @@ export class ContactComponent implements OnInit {
     return re.test(String(email).toLowerCase());
   }
 
-  reloadComponent(): void {
-    // Hack: Reloads the component
-    this.router.navigate(['/']).then((nav) => {
-      this.router.navigate(['/', 'contact']);
-    });
+  showSnackBar(text: string) {
+    this.snackBar = {
+      show: true,
+      text,
+    };
+
+    setTimeout(() => {
+      this.snackBar.show = false;
+    }, 10000);
   }
 }

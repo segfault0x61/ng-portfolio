@@ -34,6 +34,8 @@
   margin: 30px 0 0 35px;
   vertical-align: top;
   text-align: left;
+  position: relative;
+  bottom: 30px;
 }
 .home-top-right li {
   list-style-type: none;
@@ -44,12 +46,14 @@
   width: 20px;
   padding-right: 10px;
   display: inline-block;
+  color: rgb(38, 119, 180);
 }
 
 .home-bottom-text {
   width: 600px;
   max-width: 80vw;
   margin: 40px auto 20px auto;
+  text-align: center;
 }
 
 .button {
@@ -69,8 +73,8 @@
   width: 80px;
 }
 
-.CV {
-  width: 120px;
+.resume {
+  // width: 120px;
 }
 
 .linkedin {
@@ -81,4 +85,19 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.name {
+  color: rgb(38, 119, 180);
+  font-size: 35px;
+  padding-right: 65px;
+  padding-top: 40px;
+}
+
+.link {
+  font-weight: bold;
+}
+
+.link:hover {
+  text-decoration: underline;
 }
