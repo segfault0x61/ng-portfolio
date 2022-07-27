@@ -13,6 +13,9 @@ body {
 a {
   color: rgb(0, 110, 253);
   text-decoration: inherit;
+  /*:hover {
+    color: rgb(56, 56, 56);
+  }*/
 }
 
 li a {
@@ -38,16 +41,21 @@ h2 {
   .home-top-left-image {
     text-align: center !important;
   }
-  .home-top-right h2 {
+  .home-top-right h1 {
     text-align: center !important;
+    font-size: 30px;
+    padding-left: 50px;
+    margin-top: -45px;
   }
-  .home-top-right {
-    position: relative;
-    left: 35px;
+
+  .home-top-right ul li {
+    padding-left: 30px;
   }
+
   .home-bottom-text {
+    width: 150px;
     position: relative;
-    bottom: 40px;
+    bottom: 60px;
   }
 }
 @media screen and (max-width: 540px) {

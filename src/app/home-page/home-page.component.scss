@@ -2,30 +2,36 @@
 
 .home-top-container {
   padding-top: 130px;
-  width: 100vw;
   vertical-align: top;
   text-align: center;
 }
-.home-top-container h2 {
-  text-align: right;
+
+.home-top-container h1 {
+  text-align: center;
+  padding-top: 50px;
+  color: rgb(38, 119, 180);
+  padding-right: 50px;
 }
+
 .home-top-left {
   display: inline-block;
   width: 250px;
   height: 250px;
 }
+
 .home-top-left-image img {
   border: 1px solid rgba(128, 128, 128, 0.205);
   width: 80%;
-  height: 90%;
   border-radius: 5px;
   background-size: cover;
   vertical-align: top;
 }
+
 .home-top-right {
   display: inline-block;
   vertical-align: top;
 }
+
 .home-top-right ul {
   width: 300px;
   /*border: 1px solid black;*/
@@ -37,9 +43,11 @@
   position: relative;
   bottom: 30px;
 }
+
 .home-top-right li {
   list-style-type: none;
 }
+
 .home-top-right li .icon {
   font-size: 1.3em;
   text-align: right;
@@ -74,7 +82,7 @@
 }
 
 .resume {
-  // width: 120px;
+  width: 80px;
 }
 
 .linkedin {
